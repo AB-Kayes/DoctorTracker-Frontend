@@ -45,9 +45,14 @@ export function CommandPalette({
   onOpenCreatePatient?: () => void;
 }) {
   const router = useRouter();
-  const { theme, setTheme } = useTheme();
+  const [mounted, setMounted] = useState(false);
+  const { resolvedTheme, setTheme } = useTheme();
   const [query, setQuery] = useState("");
   const debouncedQuery = useDebounce(query, 200);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
 
   const [loading, setLoading] = useState(false);
   const [doctors, setDoctors] = useState<IDoctor[]>([]);
@@ -310,16 +315,16 @@ export function CommandPalette({
           <CommandItem
             value="action-toggle-theme"
             onSelect={() => {
-              setTheme(theme === "dark" ? "light" : "dark");
+              setTheme(resolvedTheme === "dark" ? "light" : "dark");
               onOpenChange(false);
             }}
           >
-            {theme === "dark" ? (
+            {mounted && resolvedTheme === "dark" ? (
               <Sun className="h-4 w-4 text-warning" />
             ) : (
               <Moon className="h-4 w-4 text-muted-foreground" />
             )}
-            <span>Toggle {theme === "dark" ? "Light" : "Dark"} Mode</span>
+            <span>Toggle {mounted && resolvedTheme === "dark" ? "Light" : "Dark"} Mode</span>
           </CommandItem>
         </CommandGroup>
       </CommandList>

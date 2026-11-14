@@ -1,6 +1,6 @@
 "use client";
 
-import React from "react";
+import React, { useState, useEffect } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { Search, Menu, ChevronRight, Sun, Moon } from "lucide-react";
@@ -15,7 +15,12 @@ export function TopHeader({
   onOpenMobileMenu?: () => void;
 }) {
   const pathname = usePathname();
-  const { theme, setTheme } = useTheme();
+  const [mounted, setMounted] = useState(false);
+  const { resolvedTheme, setTheme } = useTheme();
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
 
   const getBreadcrumbs = () => {
     const parts = pathname.split("/").filter(Boolean);
@@ -68,11 +73,12 @@ export function TopHeader({
         <Button
           variant="ghost"
           size="icon"
-          onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
+          onClick={() => setTheme(resolvedTheme === "dark" ? "light" : "dark")}
           className="h-9 w-9 rounded-xl border border-border bg-surface text-muted-foreground hover:bg-muted/60 hover:text-foreground transition-colors shadow-xs"
-          title={theme === "dark" ? "Switch to light mode" : "Switch to dark mode"}
+          title={mounted && resolvedTheme === "dark" ? "Switch to light mode" : "Switch to dark mode"}
+          aria-label="Toggle theme"
         >
-          {theme === "dark" ? (
+          {mounted && resolvedTheme === "dark" ? (
             <Sun className="h-4 w-4 text-warning" />
           ) : (
             <Moon className="h-4 w-4 text-muted-foreground" />
