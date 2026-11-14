@@ -105,7 +105,21 @@ graph TD
 
 ---
 
-## 5. Directory Structure
+## 5. Visual Evidence
+
+| View / Screen | Platform | Description | Key Features Demonstrated |
+| :--- | :--- | :--- | :--- |
+| **Administrative Dashboard** | Desktop & Mobile | Real-time clinical intelligence and operational health monitor | Top 4 StatCards with dynamic MoM trends, Admissions Timeline Area Chart (gradient fill), Specialization Bar Chart, Status Donut Chart, and recent activity tables. |
+| **Doctor Management Directory** | Desktop | Comprehensive directory of hospital practitioners | Debounced search, specialization filter dropdown, date-range picker, sortable column headers, multi-select checkboxes, floating Bulk Action Bar, CSV export. |
+| **Doctor Profile & Caseload Roster** | Desktop & Mobile | In-depth physician caseload breakdown (`/doctors/[id]`) | Credential header, active caseload statistics, integrated patient table with direct "Add Patient under Doctor" modal (doctor locked) and unassign action. |
+| **Patient Clinical Registry** | Desktop & Mobile | Dedicated patient intake and clinical status tracker | Status filter tabs (`All`, `Admitted`, `Outpatient`, `Discharged`) with live count chips, condition filter, doctor filter, bulk status update, bulk delete, and CSV export. |
+| **Responsive Modals** | Desktop & Mobile | Nexus-style dialog workflows | Add Doctor and Admit Patient dialogs with real-time Zod validation, error indicators, and themed scrollable viewports. |
+| **Universal Command Palette (⌘K)** | Desktop & Mobile | Global keyboard search & deep-link navigator | Parallel real-time doctor & patient search; clicking a patient redirects to `/patients?search=...`, resets conflicting tabs, and isolates the target record. |
+| **One-Click Theme Switcher** | Desktop & Mobile | Seamless light/dark mode adaptation | Hydration-safe theme toggle using `resolvedTheme` to guarantee instantaneous switching from system dark mode on a single click. |
+
+---
+
+## 6. Directory Structure
 
 ```text
 DoctorTracker-Frontend/
@@ -141,7 +155,7 @@ DoctorTracker-Frontend/
 
 ---
 
-## 6. Quick Start Guide
+## 7. Quick Start Guide
 
 ### Prerequisites
 - **Node.js**: v18.0.0 or higher (v20+ recommended)
@@ -207,7 +221,7 @@ npm run lint
 
 ---
 
-## 7. Deployment to Vercel
+## 8. Deployment to Vercel
 
 1. Import your `DoctorTracker-Frontend` repository into [Vercel](https://vercel.com/).
 2. Framework preset: **Next.js** (detected automatically).
@@ -219,6 +233,6 @@ npm run lint
 
 ---
 
-## 8. License
+## 9. License
 
 This project is open-source and available under the [ISC License](LICENSE).
