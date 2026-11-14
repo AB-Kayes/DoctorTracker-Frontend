@@ -1,0 +1,128 @@
+@import "@fontsource-variable/geist";
+@import "@fontsource-variable/geist-mono";
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --radius: 0.875rem;
+
+    /* Nexus Warm Neutrals + Healthcare Teal Primary */
+    --background: 40 18% 92%;
+    --foreground: 28 14% 12%;
+
+    --surface: 45 35% 98%;
+    --surface-inset: 40 20% 88%;
+
+    --card: 45 35% 98%;
+    --card-foreground: 28 14% 12%;
+
+    --popover: 45 35% 98%;
+    --popover-foreground: 28 14% 12%;
+
+    /* Healthcare Teal */
+    --primary: 174 84% 32%;
+    --primary-foreground: 0 0% 100%;
+    --primary-soft: 174 50% 92%;
+
+    --secondary: 40 20% 90%;
+    --secondary-foreground: 28 14% 12%;
+
+    --muted: 40 16% 88%;
+    --muted-foreground: 30 8% 44%;
+
+    --accent: 174 45% 92%;
+    --accent-foreground: 174 84% 24%;
+
+    --destructive: 0 72% 51%;
+    --destructive-foreground: 0 0% 100%;
+
+    --success: 142 71% 40%;
+    --success-foreground: 0 0% 100%;
+
+    --warning: 38 92% 50%;
+    --warning-foreground: 0 0% 100%;
+
+    --info: 217 91% 60%;
+    --info-foreground: 0 0% 100%;
+
+    --border: 38 18% 82%;
+    --border-strong: 38 16% 70%;
+    --input: 38 18% 82%;
+    --ring: 174 84% 32%;
+  }
+
+  .dark {
+    --background: 28 12% 10%;
+    --foreground: 45 20% 94%;
+
+    --surface: 28 12% 14%;
+    --surface-inset: 28 12% 11%;
+
+    --card: 28 12% 14%;
+    --card-foreground: 45 20% 94%;
+
+    --popover: 28 12% 14%;
+    --popover-foreground: 45 20% 94%;
+
+    --primary: 174 70% 45%;
+    --primary-foreground: 0 0% 100%;
+    --primary-soft: 174 60% 16%;
+
+    --secondary: 28 10% 20%;
+    --secondary-foreground: 45 20% 94%;
+
+    --muted: 28 10% 20%;
+    --muted-foreground: 40 8% 60%;
+
+    --accent: 174 50% 18%;
+    --accent-foreground: 174 70% 65%;
+
+    --destructive: 0 62% 40%;
+    --destructive-foreground: 0 0% 100%;
+
+    --success: 142 60% 40%;
+    --success-foreground: 0 0% 100%;
+
+    --warning: 38 85% 45%;
+    --warning-foreground: 0 0% 100%;
+
+    --info: 217 80% 55%;
+    --info-foreground: 0 0% 100%;
+
+    --border: 28 10% 22%;
+    --border-strong: 28 10% 32%;
+    --input: 28 10% 22%;
+    --ring: 174 70% 45%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground font-sans antialiased;
+  }
+}
+
+.surface-card {
+  @apply rounded-2xl border border-border bg-card shadow-card transition-all;
+}
+
+.themed-scroll::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+.themed-scroll::-webkit-scrollbar-track {
+  background: transparent;
+}
+.themed-scroll::-webkit-scrollbar-thumb {
+  background: hsl(var(--border-strong) / 0.5);
+  border-radius: 9999px;
+}
+.themed-scroll::-webkit-scrollbar-thumb:hover {
+  background: hsl(var(--border-strong));
+}
